@@ -1,4 +1,5 @@
-discord.py
-aiohttp
+discord.py==1.7.2
+aiohttp==3.7.4
 websockets
 chardet
+async-timeout==3.0.1
