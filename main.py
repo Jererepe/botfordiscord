@@ -40,6 +40,11 @@ async def clear(ctx, amount=100):
     await ctx.channel.purge(limit=amount)
 
 
+@bot.command(aliases=['слава'])
+async def cmd4(ctx):
+    await ctx.send('нации')
+
+
 @bot.command(aliases=['негры'])
 async def Niggers(ctx, amount=1):
     await ctx.channel.purge(limit=amount)
