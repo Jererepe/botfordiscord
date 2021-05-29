@@ -50,17 +50,12 @@ async def Niggers(ctx, amount=1):
     await ctx.channel.purge(limit=amount)
     await ctx.send('''I HATE NIGGERS''')
 
-
-@bot.command(pass_context=True)
-@commands.has_permissions(administrator=True)
-async def mute(ctx, member: discord.Member):
-    await ctx.channel.purge(limit=1)
-
-    mute_role = discord.utils.get(ctx.message.guild.roles, name='MUTE')
-
-    await member.add_roles(847794662608994334)
-    await ctx.send(f'У {member.mention}, ограничение чата, потому что он вел себя как чмо')
-
+    
+@bot.command(aliases=['связь'])
+async def source(ctx, amount=1):
+    await ctx.channel.purge(limit=amount)
+    await ctx.send('VK - https://vk.com/jererepe\nDiscord - Phrog makes *qwa* 𓆏#5748')
+    
 
 @bot.command(aliases=['Эпики'])
 async def EGS(ctx):
@@ -94,9 +89,6 @@ async def rules(ctx):
                    'не отвлекайте их за зря.\n6. Никакой рекламы.')
 
     
-@bot.command(aliases=['связаться'])
-async def cmd5(ctx):
-    await ctx.send('VK - https://vk.com/jererepe\nDiscord - Phrog makes *qwa* 𓆏#5748')
     
 @bot.event
 async def on_ready():
