@@ -58,7 +58,7 @@ async def mute(ctx, member: discord.Member):
 
     mute_role = discord.utils.get(ctx.message.guild.roles, name='MUTE')
 
-    await member.add_roles(mute_role)
+    await member.add_roles(847794662608994334)
     await ctx.send(f'У {member.mention}, ограничение чата, потому что он вел себя как чмо')
 
 
