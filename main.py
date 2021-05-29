@@ -65,7 +65,7 @@ async def EGS(ctx):
 @bot.command(aliases=['правила'])
 async def rules(ctx, amount=1):
     await ctx.channel.purge(limit=amount)
-    await ctx.send('временно недоступна')
+    await ctx.send('команда "правила" временно недоступна')
 
     
     
