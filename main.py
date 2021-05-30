@@ -54,7 +54,7 @@ async def Niggers(ctx, amount=1):
 @bot.command(aliases=['связь'])
 async def source(ctx, amount=1):
     await ctx.channel.purge(limit=amount)
-    await ctx.send('VK - https://vk.com/jererepe\nDiscord - Phrog makes *qwa* 𓆏#5748')
+    await ctx.send('🧸VK - https://vk.com/jererepe\n💎Discord - Phrog makes *qwa* 𓆏#5748')
     
 
 @bot.command(aliases=['Эпики'])
