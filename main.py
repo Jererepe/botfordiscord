@@ -24,14 +24,14 @@ async def funcmd2(ctx):
 @bot.command(aliases=['команды'])
 async def cmds(ctx, amount=1):
     await ctx.channel.purge(limit=amount)
-    await ctx.send("я могу принести тебе мячик! просто попроси!\nкоманда - мяч!\n\n=====доступна только сенату и выше "
-                   "стоящим!=====\nclear *число* - очистит чат (писать "
-                   "кол-во сообщений(до 100), учитывая эту команду!)\n=====доступна только сенату и выше стоящим!=====")
+    await ctx.send("я могу принести тебе мячик! просто попроси!\nкоманда - мяч!\n\n🔹доступна только сенату и выше "
+                   "стоящим!\nclear *число* - очистит чат (писать "
+                   "кол-во сообщений(до 100), учитывая эту команду!)\n🔹доступна только сенату и выше стоящим!")
 
 
 @bot.command(aliases=['мяч!'])
 async def cmd3(ctx):
-    await ctx.send('держи\n:baseball:')
+    await ctx.send('держи\n⚾️')
 
 
 @bot.command(pass_context=True)
@@ -41,8 +41,7 @@ async def clear(ctx, amount=100):
 
 
 @bot.command(aliases=['негры'])
-async def Niggers(ctx, amount=1):
-    await ctx.channel.purge(limit=amount)
+async def Niggers(ctx)
     await ctx.send('''I HATE NIGGERS''')
 
 
@@ -50,9 +49,7 @@ async def Niggers(ctx, amount=1):
 @commands.has_permissions(administrator=True)
 async def mute(ctx, member: discord.Member):
     await ctx.channel.purge(limit=1)
-
     mute_role = discord.utils.get(ctx.message.guild.roles, name='MUTE')
-
     await member.add_roles(mute_role)
     await ctx.send(f'У {member.mention}, ограничение чата, потому что он вел себя как чмо')
 
