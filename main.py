@@ -1,4 +1,3 @@
-import os
 import discord
 from discord.ext import commands
 from discord.ext.commands import Bot
@@ -6,7 +5,7 @@ from discord.ext.commands import Bot
 bot: Bot = commands.Bot(command_prefix='')
 
 
-@bot.command(aliases=('абоба',))
+@bot.command(aliases=['абоба'])
 async def cmd0(ctx):
     await ctx.send('напиши "cmds" или "команды" - и увидишь список команд')
 
@@ -21,12 +20,17 @@ async def funcmd2(ctx):
     await ctx.send('Нет пизды')
 
 
+@bot.command(aliases=['гачи'])
+async def gachi(ctx):
+    await ctx.send("https://imgur.com/gallery/8H2M6UO.jpg")
+
+
 @bot.command(aliases=['команды'])
 async def cmds(ctx, amount=1):
     await ctx.channel.purge(limit=amount)
-    await ctx.send("я могу принести тебе мячик! просто попроси!\nкоманда - мяч!\n\n🔴доступна только модераторам и выше "
-                   "стоящим!🔴\nclear *число* - очистит чат (писать "
-                   "кол-во сообщений(до 100)\n(учитывая эту команду!)\n🔴доступна только модераторам и выше стоящим!🔴\n\nправила - укажет список правил\nсвязь - ссылка на вк и дискорд кодера")
+    await ctx.send("я могу принести тебе мячик! просто попроси!\nкоманда - мяч!\n\n=====доступна только сенату и выше "
+                   "стоящим!=====\nclear *число* - очистит чат (писать "
+                   "кол-во сообщений(до 100), учитывая эту команду!)\n=====доступна только сенату и выше стоящим!=====")
 
 
 @bot.command(aliases=['мяч!'])
@@ -40,35 +44,38 @@ async def clear(ctx, amount=100):
     await ctx.channel.purge(limit=amount)
 
 
-@bot.command(aliases=['слава'])
-async def cmd4(ctx):
-    await ctx.send('нации')
-
-
 @bot.command(aliases=['негры'])
 async def Niggers(ctx, amount=1):
     await ctx.channel.purge(limit=amount)
     await ctx.send('''I HATE NIGGERS''')
 
-    
-@bot.command(aliases=['связь'])
-async def source(ctx, amount=1):
-    await ctx.channel.purge(limit=amount)
-    await ctx.send('🧸VK - https://vk.com/jererepe\n💎Discord - Phrog makes *qwa* 𓆏#5748\n🎯STEAM - https://steamcommunity.com/id/MinetVaginRaka/')
-    
 
-@bot.command(aliases=['Эпики'])
+@bot.command(pass_context=True)
+@commands.has_permissions(administrator=True)
+async def mute(ctx, member: discord.Member):
+    await ctx.channel.purge(limit=1)
+
+    mute_role = discord.utils.get(ctx.message.guild.roles, name='MUTE')
+
+    await member.add_roles(mute_role)
+    await ctx.send(f'У {member.mention}, ограничение чата, потому что он вел себя как чмо')
+
+
+@bot.command(aliases=['слава'])
+async def cmd4(ctx):
+    await ctx.send('нации')
+
+
+@bot.command(aliases=['эпики'])
 async def EGS(ctx):
     await ctx.send('пидорасы и жиды')
 
 
-@bot.command(aliases=['правила'])
-async def rules(ctx, amount=1):
-    await ctx.channel.purge(limit=amount)
-    await ctx.send('команда "правила" временно недоступна')
+@bot.command(aliases=['связаться'])
+async def cmd5(ctx):
+    await ctx.send('VK - https://vk.com/jererepe\nDiscord - Phrog makes *qwa* 𓆏#5748')
 
-    
-    
+
 @bot.event
 async def on_ready():
     print('Это же Азамат Айталиев!')
@@ -85,6 +92,13 @@ async def on_message_edit(before, after):
 async def on_member_join(ctx, member):
     """это же Азамат Айталиев!."""
     await ctx.send(f'Добро пожаловать {member}! Напиши "команды" чтобы узнать мои команды.')
+
+
+@bot.event
+async def on_message(message):
+    message.content = message.content.lower().replace(' ', '')
+    await bot.process_commands(message)
+
 
 
 token = os.environ.get('BOT_TOKEN')
