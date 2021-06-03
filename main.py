@@ -20,10 +20,6 @@ async def funcmd2(ctx):
     await ctx.send('Нет пизды')
 
 
-@bot.command(aliases=['гачи'])
-async def gachi(ctx):
-    await ctx.send("https://imgur.com/gallery/8H2M6UO.jpg")
-
 
 @bot.command(aliases=['команды'])
 async def cmds(ctx, amount=1):
@@ -98,7 +94,6 @@ async def on_member_join(ctx, member):
 async def on_message(message):
     message.content = message.content.lower().replace(' ', '')
     await bot.process_commands(message)
-
 
 
 token = os.environ.get('BOT_TOKEN')
