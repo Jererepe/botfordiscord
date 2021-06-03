@@ -87,11 +87,6 @@ async def on_member_join(ctx, member):
     await ctx.send(f'Добро пожаловать {member}! Напиши "команды" чтобы узнать мои команды.')
 
 
-@bot.event
-async def on_message(message):
-    message.content = message.content.lower().replace(' ', '')
-    await bot.process_commands(message)
-
 
 token = os.environ.get('BOT_TOKEN')
 bot.run(token)
