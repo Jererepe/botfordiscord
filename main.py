@@ -89,4 +89,4 @@ async def on_member_join(ctx, member):
 
 
 token = os.environ.get('BOT_TOKEN')
-bot.run(token)
+bot.run('token')
