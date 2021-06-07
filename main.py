@@ -26,7 +26,7 @@ async def cmds(ctx, amount=1):
     await ctx.channel.purge(limit=amount)
     await ctx.send("я могу принести тебе мячик! просто попроси!\nкоманда - мяч!\n\n🔹доступна только сенату и выше "
                    "стоящим!\nclear *число* - очистит чат (писать "
-                   "кол-во сообщений(до 100), учитывая эту команду!)\n🔹доступна только сенату и выше стоящим!")
+                   "кол-во сообщений(до 100), учитывая эту команду!)\n🔹доступна только сенату и выше стоящим!\nадмин - напомнит кто тут главный")
 
 
 @bot.command(aliases=['мяч!'])
@@ -34,6 +34,11 @@ async def cmd3(ctx):
     await ctx.send('держи\n⚾️')
 
 
+@bot.command(aliases=['админ'])
+async def cmd4(ctx):
+    await ctx.send('Главный тут биос!')
+    
+    
 @bot.command(pass_context=True)
 @commands.has_permissions(administrator=True)
 async def clear(ctx, amount=100):
@@ -79,13 +84,6 @@ async def on_message_edit(before, after):
     if before.content == after.content:
         return
     await before.channel.send(f'Сообщение было изменено!\n{before.content} -> {after.content}')
-
-
-@bot.event
-async def on_member_join(ctx, member):
-    """это же Азамат Айталиев!."""
-    await ctx.send(f'Добро пожаловать {member}! Напиши "команды" чтобы узнать мои команды.')
-
 
 
 token = os.environ.get('BOT_TOKEN')
