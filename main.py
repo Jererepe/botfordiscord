@@ -21,25 +21,24 @@ async def funcmd2(ctx):
     await ctx.send('Нет пизды')
 
 
+@bot.command(aliases=['гачи'])
+async def gachi(ctx):
+    await ctx.send("https://imgur.com/gallery/8H2M6UO.jpg")
+
 
 @bot.command(aliases=['команды'])
 async def cmds(ctx, amount=1):
     await ctx.channel.purge(limit=amount)
-    await ctx.send("я могу принести тебе мячик! просто попроси!\nкоманда - мяч!\n\n🔹доступна только сенату и выше "
-                   "стоящим!\nclear *число* - очистит чат (писать "
-                   "кол-во сообщений(до 100), учитывая эту команду!)\n🔹доступна только сенату и выше стоящим!\nадмин - напомнит кто тут главный")
+    await ctx.send("я могу принести тебе мячик! просто попроси!\nкоманда - мяч!\n\n=====доступна только сенату и выше "
+                   "стоящим!=====\nclear *число* - очистит чат (писать "
+                   "кол-во сообщений(до 100), учитывая эту команду!)\n=====доступна только сенату и выше стоящим!=====")
 
 
 @bot.command(aliases=['мяч!'])
 async def cmd3(ctx):
-    await ctx.send('держи\n⚾️')
+    await ctx.send('держи\n:baseball:')
 
 
-@bot.command(aliases=['админ'])
-async def cmd4(ctx):
-    await ctx.send('Главный тут биос!')
-    
-    
 @bot.command(pass_context=True)
 @commands.has_permissions(administrator=True)
 async def clear(ctx, amount=100):
@@ -47,7 +46,8 @@ async def clear(ctx, amount=100):
 
 
 @bot.command(aliases=['негры'])
-async def Niggers(ctx)
+async def Niggers(ctx, amount=1):
+    await ctx.channel.purge(limit=amount)
     await ctx.send('''I HATE NIGGERS''')
 
 
@@ -55,7 +55,9 @@ async def Niggers(ctx)
 @commands.has_permissions(administrator=True)
 async def mute(ctx, member: discord.Member):
     await ctx.channel.purge(limit=1)
+
     mute_role = discord.utils.get(ctx.message.guild.roles, name='MUTE')
+
     await member.add_roles(mute_role)
     await ctx.send(f'У {member.mention}, ограничение чата, потому что он вел себя как чмо')
 
@@ -63,11 +65,6 @@ async def mute(ctx, member: discord.Member):
 @bot.command(aliases=['слава'])
 async def cmd4(ctx):
     await ctx.send('нации')
-
-
-@bot.command(aliases=['эпики'])
-async def EGS(ctx):
-    await ctx.send('пидорасы и жиды')
 
 
 @bot.command(aliases=['связаться'])
