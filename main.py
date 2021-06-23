@@ -70,7 +70,7 @@ async def on_ready():
 async def on_message_edit(before, after):
     if before.content == after.content:
         return
-    await before.channel.send(f'Сообщение было изменено!\n{before.content} -> {after.content}')
+    await before.channel.send(f'Сообщение было изменено!\n`{before.content} -> {after.content}`')
 
 
 @bot.event
