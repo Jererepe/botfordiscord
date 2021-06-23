@@ -84,17 +84,7 @@ async def on_message_edit(before, after):
     if before.content == after.content:
         return
     await before.channel.send(f'Сообщение было изменено!\n{before.content} -> {after.content}')
-    
-    
-@bot.command()
-@commands.has_permissions(manage_roles=True, ban_members=True, kick_members=True)
-async def mute(ctx, user: discord.Member, time: int, reason):
-    role = user.guild.get_role(856261502515544144) # айди роли которую будет получать юзер
-    await ctx.send(f'{user} получил мут на {time} минут по причине: {reason}')
-    await user.add_roles(role)
-    await user.move_to(None)
-    await asyncio.sleep(time * 60)
-    await user.remove_roles(role)    
+      
 
 
 token = os.environ.get('BOT_TOKEN')
