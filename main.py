@@ -87,5 +87,5 @@ async def on_message_edit(before, after):
       
 
 
-token = os.environ.get('BOT_TOKEN')
-bot.run('token')
+#token = os.environ.get('BOT_TOKEN')
+bot.run('ODQ3MDgyODUyMDk2MTQ3NDc3.YK45YQ.3g9MwKU6oWbzP0p48lkq4y8BxiI')
