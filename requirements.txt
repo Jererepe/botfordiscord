@@ -1,5 +1,5 @@
 discord.py==1.7.2
 aiohttp==3.7.4
 websockets
-chardet
+chardet 4.0.0
 async-timeout==3.0.1
