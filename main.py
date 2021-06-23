@@ -3,7 +3,7 @@ import discord
 from discord.ext import commands
 from discord.ext.commands import Bot
 
-bot = commands.Bot(command_prefix='!', case_insensitive=True)
+bot: Bot = commands.Bot(command_prefix='')
 
 
 @bot.command(aliases=('абоба',))
