@@ -2,6 +2,8 @@ import discord
 from discord.ext import commands
 from discord.ext.commands import Bot
 import os
+import asyncio
+from asyncio import sleep
 
 bot: Bot = commands.Bot(command_prefix='')
 
@@ -31,7 +33,7 @@ async def cmds(ctx, amount=1):
     await ctx.channel.purge(limit=amount)
     await ctx.send("я могу принести тебе мячик! просто попроси!\nкоманда - мяч!\n\n=====доступна только сенату и выше "
                    "стоящим!=====\nclear *число* - очистит чат (писать "
-                   "кол-во сообщений(до 100), учитывая эту команду!)\n=====доступна только сенату и выше стоящим!=====")
+                   "кол-во сообщений(до 100), учитывая эту команду!)\n=====доступна только сенату и выше стоящим!=====\nсвязь - ссылка на стим разраба")
 
 
 @bot.command(aliases=['мяч!'])
@@ -67,9 +69,9 @@ async def cmd4(ctx):
     await ctx.send('нации')
 
 
-@bot.command(aliases=['связаться'])
+@bot.command(aliases=['связь'])
 async def cmd5(ctx):
-    await ctx.send('VK - https://vk.com/jererepe\nDiscord - Phrog makes *qwa* 𓆏#5748')
+    await ctx.send('Steam - https://cutt.ly/jn4PWOh ')
 
 
 @bot.event
@@ -82,6 +84,17 @@ async def on_message_edit(before, after):
     if before.content == after.content:
         return
     await before.channel.send(f'Сообщение было изменено!\n{before.content} -> {after.content}')
+    
+    
+@bot.command()
+@commands.has_permissions(manage_roles=True, ban_members=True, kick_members=True)
+async def mute(ctx, user: discord.Member, time: int, reason):
+    role = user.guild.get_role(856261502515544144) # айди роли которую будет получать юзер
+    await ctx.send(f'{user} получил мут на {time} минут по причине: {reason}')
+    await user.add_roles(role)
+    await user.move_to(None)
+    await asyncio.sleep(time * 60)
+    await user.remove_roles(role)    
 
 
 token = os.environ.get('BOT_TOKEN')
