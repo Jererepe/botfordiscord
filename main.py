@@ -59,7 +59,7 @@ async def Niggers(ctx, amount=1):
 
     
 @bot.command(aliases=['связь'])
-async def cmd5(ctx):
+async def cmd6(ctx):
     await ctx.send('Steam - https://cutt.ly/jn4PWOh \nDiscord - Phrog makes *qwa* 𓆏#5748')
     
 
