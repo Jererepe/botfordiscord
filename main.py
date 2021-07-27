@@ -6,7 +6,7 @@ from discord.ext.commands import Bot
 bot: Bot = commands.Bot(command_prefix='')
 
 
-@bot.command(aliases=('абоба',))
+@bot.command(aliases=['абоба'])
 async def cmd0(ctx):
     await ctx.send('напиши "cmds" и увидишь список команд')
 
